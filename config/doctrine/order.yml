@@ -3,7 +3,7 @@ tpyOrder:
     Timestampable: ~
   columns:
     id:
-      type: integer(11)
+      type: integer(4)
       primary: true
       autoincrement: true
     #TODO: should become a relation to address model
@@ -29,12 +29,6 @@ tpyOrder:
       local: payment_id
       foreignAlias: Order
       foreignType: one
-    States:
-      class:        tpyOrderState
-      refClass:     tpyOrderOrderState
-      foreignAlias: Orders
-      foreign:      state_id
-      local:        order_id
     User:
       class: sfGuardUser
       local: sf_guard_user_id
@@ -45,11 +39,11 @@ tpyOrder:
 tpyOrderItem:
   columns:
     id:
-      type: integer(11)
+      type: integer(4)
       primary: true
       autoincrement: true
     order_id:
-      type: integer(11)
+      type: integer(4)
     count:
       type: integer(3)
     frozen_data:
@@ -63,7 +57,7 @@ tpyOrderItem:
 tpyOrderOrderState:
   columns:
     id:
-      type: integer(11)
+      type: integer(4)
       primary: true
       autoincrement: true
     order_id: integer(4)
@@ -72,8 +66,11 @@ tpyOrderOrderState:
     State:
       class:        tpyOrderState
       foreign:      id
+      foreignAlias: OrderStates
       local:        state_id
     Order:
       class:        tpyOrder
       foreign:      id
+      foreignAlias: Orders
       local:        order_id
+

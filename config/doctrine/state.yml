@@ -1,4 +1,3 @@
-
 tpyOrderState:
   inheritance:
     extends:   tpyState
@@ -9,7 +8,7 @@ tpyOrderState:
 tpyState:
   columns:
     id:
-      type: integer(11)
+      type: integer(4)
       primary: true
       autoincrement: true
     name:        string(50)
