@@ -3,8 +3,8 @@ tpyOrderState:
   inheritance:
     extends:   tpyState
     type:      column_aggregation
-    key_field: type
-    key_value: 'tpyOrderState'
+    keyField:  type
+    keyValue:  'tpyOrderState'
 
 tpyState:
   columns:
