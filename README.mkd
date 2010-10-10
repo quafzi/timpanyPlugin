@@ -1,0 +1,3 @@
+# Timpany, a web shop based on symfony
+
+This project contains the timpany core module.
