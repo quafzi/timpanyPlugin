@@ -1,0 +1,32 @@
+tpyTax:
+  columns:
+    id:
+      type: integer(11)
+      primary: true
+      autoincrement: true
+    name:
+      type: string(150)
+    tax_percent:
+      type: float
+    region:
+      type: string(10)
+    tax_class_id:
+      type: integer(3)
+  indexes:
+    unique_region_tax_class:
+      fields: [tax_class_id, region]
+      type:   unique
+  relations:
+    TaxClass:
+      class: tpyTaxClass
+      local: tax_class_id
+      foreignAlias: Tax
+
+tpyTaxClass:
+  columns:
+    id:
+      type: integer(3)
+      primary: true
+      autoincrement: true
+    name:
+      type: string(150)

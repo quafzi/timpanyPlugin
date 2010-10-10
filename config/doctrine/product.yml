@@ -1,0 +1,32 @@
+tpyProduct:
+  actAs:
+    Timestampable: ~
+#    Taggable: ~
+    Sluggable:
+      fields: [ name ]
+      builder: [ sfTools, slugify ]
+  columns:
+    id:
+      type: integer(11)
+      primary: true
+      autoincrement: true
+    name:
+      type: string(150)
+    description:
+      type: text
+    article_number:
+      type: string(36)
+    net_price:
+      type: float
+    inventory:
+      type: float
+    class_name:
+      type: string(150)
+      default: "tpyProduct"
+    tax_class_id:
+      type: integer(3)
+  relations:
+    TaxClass:
+      class:        tpyTaxClass
+      local:        tax_class_id
+      foreignAlias: Products

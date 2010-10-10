@@ -1,0 +1,18 @@
+
+tpyOrderState:
+  inheritance:
+    extends:   tpyState
+    type:      column_aggregation
+    key_field: type
+    key_value: 'tpyOrderState'
+
+tpyState:
+  columns:
+    id:
+      type: integer(11)
+      primary: true
+      autoincrement: true
+    name:        string(50)
+    description: text
+
+

@@ -1,0 +1,30 @@
+tpyUserCart:
+  actAs:
+    Timestampable: ~
+  columns:
+    id:
+      type:             integer(11)
+      primary:          true
+      autoincrement:    true
+    sf_guard_user_id:   integer(4)
+  relations:
+    User:
+      class:            sfGuardUser
+      local:            sf_guard_user_id
+      foreignType:      one
+
+tpyCartItem:
+  columns:
+    id:
+      type:             integer(11)
+      primary:          true
+      autoincrement:    true
+    cart_id:            integer(11)
+    count:              integer(3)
+    product_identifier: string(100)
+    product_data:       text
+  relations:
+    Cart:
+      class:            tpyUserCart
+      foreignAlias:     Items
+      local:            cart_id

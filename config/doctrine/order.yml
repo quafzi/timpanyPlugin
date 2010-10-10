@@ -1,0 +1,79 @@
+tpyOrder:
+  actAs:
+    Timestampable: ~
+  columns:
+    id:
+      type: integer(11)
+      primary: true
+      autoincrement: true
+    #TODO: should become a relation to address model
+    billing_address:
+      type: text
+    net_sum:
+      type: float
+    payment_id:
+      type: integer(11)
+      unsigned: true
+    sf_guard_user_id:
+      type: integer(4)
+    #TODO: should become a relation to address model
+    shipping_address:
+      type: text
+    shipping_data:
+      type: text
+    #TODO: could become a relation to a shipping model
+    shipping_method:
+      type: string(150)
+  relations:
+    Payment:
+      local: payment_id
+      foreignAlias: Order
+      foreignType: one
+    States:
+      class:        tpyOrderState
+      refClass:     tpyOrderOrderState
+      foreignAlias: Orders
+      foreign:      state_id
+      local:        order_id
+    User:
+      class: sfGuardUser
+      local: sf_guard_user_id
+      foreignType: one
+      # FIXME: How to handle this when user gets deleted? (CASCADE is bad!)
+      onDelete: SET NULL
+
+tpyOrderItem:
+  columns:
+    id:
+      type: integer(11)
+      primary: true
+      autoincrement: true
+    order_id:
+      type: integer(11)
+    count:
+      type: integer(3)
+    frozen_data:
+      type: text
+  relations:
+    Order:
+      class:        tpyOrder
+      foreignAlias: Items
+      local:        order_id
+
+tpyOrderOrderState:
+  columns:
+    id:
+      type: integer(11)
+      primary: true
+      autoincrement: true
+    order_id: integer(4)
+    state_id: integer(4)
+  relations:
+    State:
+      class:        tpyOrderState
+      foreign:      id
+      local:        state_id
+    Order:
+      class:        tpyOrder
+      foreign:      id
+      local:        order_id
