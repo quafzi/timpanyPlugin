@@ -1,6 +1,6 @@
 <?php
 
-interface timpanyOrderInterface extends timpanyCartInterface
+interface tpyOrderInterface extends tpyCartInterface
 {
   /**
    * @return boolean

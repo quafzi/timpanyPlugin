@@ -1,14 +1,14 @@
 <?php
 
-interface timpanyCartInterface
+interface tpyCartInterface
 {
   /**
    * add a product to the cart
    * 
-   * @param timpanyProductInterface $product
-   * @param int                     $count
+   * @param tpyProductInterface $product
+   * @param int                 $count
    */
-  public function addProduct(timpanyProductInterface $product, $count=1);
+  public function addProduct(tpyProductInterface $product, $count=1);
   
   /**
    * clear cart
