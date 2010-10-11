@@ -1,0 +1,33 @@
+tpyOrderState:
+  cart:
+    id:         1
+    name:       "cart"
+  unpaid_unsent:
+    id:         2
+    name:       "unpaid_unsent"
+  unpaid_sent:
+    id:         3
+    name:       "unpaid_sent"
+  paid_sent:
+    id:         4
+    name:       "paid_sent"
+  paid_unsent:
+    id:         5
+    name:       "paid_unsent"
+  closed:
+    id:         6
+    name:       "closed"
+
+  canceled_closed:
+    id:         7
+    name:       "canceled_closed"
+  paid_canceled:
+    id:         8
+    name:       "paid_canceled"
+  sent_canceled:
+    id:         9
+    name:       "sent_canceled"
+  sent_paid_canceled:
+    id:         10
+    name:       "sent_paid_canceled"
+    
