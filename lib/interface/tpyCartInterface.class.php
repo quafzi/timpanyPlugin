@@ -21,7 +21,7 @@ interface tpyCartInterface
    * @param timpanyProductInterface $product
    * @return int Count of product
    */
-  public function getCountOfProduct(timpanyProductInterface $product);
+  public function getCountOfProduct(tpyProductInterface $product);
 
   /**
    * get cart items
