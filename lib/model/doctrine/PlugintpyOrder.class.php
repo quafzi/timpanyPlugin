@@ -89,13 +89,13 @@ abstract class PlugintpyOrder extends BasetpyOrder implements tpyOrderInterface
   
   /**
    * get count of a specific product
-   * @param timpanyProductInterface $product
+   * @param tpyProductInterface $product
    * 
    * @return int Count of product
    * 
    * FIXME: not yet implemented
    */
-  public function getCountOfProduct(timpanyProductInterface $product)
+  public function getCountOfProduct(tpyProductInterface $product)
   {
     
   }
@@ -156,5 +156,68 @@ abstract class PlugintpyOrder extends BasetpyOrder implements tpyOrderInterface
   public function getItemCount()
   {
     
+  }
+  
+  /** 
+   * FIXME: not yet implemented
+   * @see plugins/timpanyPlugin/lib/interface/tpyOrderInterface::isReadyToSend()
+   */
+  public function isOrdered()
+  {
+  	
+  }
+  
+  /** 
+   * FIXME: not yet implemented
+   * @see plugins/timpanyPlugin/lib/interface/tpyOrderInterface::isReadyToSend()
+   */
+  public function isPaid()
+  {
+    
+  }
+  
+  /** 
+   * FIXME: not yet implemented
+   * @see plugins/timpanyPlugin/lib/interface/tpyOrderInterface::isReadyToSend()
+   */
+  public function isSent()
+  {
+    
+  }
+  
+  /** 
+   * FIXME: not yet implemented
+   * @see plugins/timpanyPlugin/lib/interface/tpyOrderInterface::isReadyToSend()
+   */
+  public function isInvoiced()
+  {
+    
+  }
+  
+  /** 
+   * FIXME: not yet implemented
+   * @see plugins/timpanyPlugin/lib/interface/tpyOrderInterface::isReadyToSend()
+   */
+  public function isClosed()
+  {
+    
+  }
+  
+  /** 
+   * FIXME: not yet implemented
+   * @see plugins/timpanyPlugin/lib/interface/tpyOrderInterface::isReadyToSend()
+   */
+  public function isCanceled()
+  {
+    
+  }
+  
+  /**
+   * FIXME: not yet implemented
+   * @see plugins/timpanyPlugin/lib/interface/tpyOrderInterface::isReadyToSend()
+   */
+  public function isReadyToSend()
+  {
+  	
   }
 }
