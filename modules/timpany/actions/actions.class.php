@@ -3,7 +3,7 @@ class timpanyActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->products = timpanyProductTable::getInstance()->findAll();
+    $this->products = tpyProductTable::getInstance()->findAll();
   }
   
   public function executeShowCategory(sfWebRequest $request)
@@ -12,15 +12,15 @@ class timpanyActions extends sfActions
   
   public function executeShowProduct(sfWebRequest $request)
   {
-    $this->product = timpanyProductTable::getInstance()->findOneBySlug($request->getParameter('product'));
-    $this->form = new timpanyProductToCartForm();
+    $this->product = tpyProductTable::getInstance()->findOneBySlug($request->getParameter('product'));
+    $this->form = new tpyProductToCartForm();
   }
   
   public function executeAddToCart(sfWebRequest $request)
   {
-    $product = timpanyProductTable::getInstance()->findOneBySlug($request->getParameter('product'));
+    $product = tpyProductTable::getInstance()->findOneBySlug($request->getParameter('product'));
     $count = $request->getPostParameter('timpany_add_to_cart[count]', 1);
-    $this->cart = timpanyCart::getInstance($this->getUser());
+    $this->cart = tpyCart::getInstance($this->getUser());
     $this->cart->addProduct($product, $count);
     $this->cart->save();
     $this->getUser()->setFlash('last_added_product', $product->getSlug());
@@ -30,14 +30,14 @@ class timpanyActions extends sfActions
   public function executeCart(sfWebRequest $request)
   {
     if ($this->getUser()->hasFlash('last_added_product')) {
-      $this->product = timpanyProductTable::getInstance()->findOneBySlug($this->getUser()->getFlash('last_added_product'));
+      $this->product = tpyProductTable::getInstance()->findOneBySlug($this->getUser()->getFlash('last_added_product'));
     }
-    $this->cart = timpanyCart::getInstance($this->getUser());
+    $this->cart = tpyCart::getInstance($this->getUser());
   }
   
   public function executeRemoveCartItem(sfWebRequest $request)
   {
-    $this->cart = timpanyCart::getInstance($this->getUser());
+    $this->cart = tpyCart::getInstance($this->getUser());
     $this->cart->removeItem($request->getParameter('product'));
     $this->cart->save();
     $this->redirect('@timpany_cart');
@@ -45,16 +45,16 @@ class timpanyActions extends sfActions
   
   public function executeCheckout(sfWebRequest $request)
   {
-    $this->cart = timpanyCart::getInstance($this->getUser());
+    $this->cart = tpyCart::getInstance($this->getUser());
   }
   
   public function executeFinishCheckout(sfWebRequest $request)
   {
-    $cart = timpanyCart::getInstance($this->getUser());
+    $cart = tpyCart::getInstance($this->getUser());
     if (0 == $cart->getItemCount()) {
     	$this->redirect('@timpany_cart');
     }
-    $this->order = timpanyOrderTable::getInstance()->createOrder($cart);
+    $this->order = tpyOrderTable::getInstance()->createOrder($cart);
     /* payment requires a persistant order */
     $this->order->save();
     $payment = $this->order->createPayment($this);
@@ -98,11 +98,11 @@ class timpanyActions extends sfActions
   
   public function executeCheckoutFinished(sfWebRequest $request)
   {
-    $cart = timpanyCart::getInstance($this->getUser());
+    $cart = tpyCart::getInstance($this->getUser());
     $cart->clear();
     $cart->save();
     
-  	$this->order = Doctrine::getTable('timpanyOrder')->findOneById(
+  	$this->order = Doctrine::getTable('tpyOrder')->findOneById(
       $this->getUser()->getFlash('timpany_last_order_id')
     );
   }
