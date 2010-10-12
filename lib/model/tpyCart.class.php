@@ -81,13 +81,13 @@ class tpyCart implements tpyCartInterface
    */
   public function addProduct(tpyProductInterface $product, $count=1)
   {
-    if (false == array_key_exists($product->getIdentifier(), $this->_items)) {
-    	$this->_items[$product->getIdentifier()] = new tpyCartItem();
-    	$this->_items[$product->getIdentifier()]
+    if (false == array_key_exists($product->getUid(), $this->_items)) {
+    	$this->_items[$product->getUid()] = new tpyCartItem();
+    	$this->_items[$product->getUid()]
     	  ->setCount($count)
         ->setProductData($product->toCartItem());
     } else {
-      $this->_items[$product->getIdentifier()]->increaseCount($count);
+      $this->_items[$product->getUid()]->increaseCount($count);
     }
   }
   
@@ -115,7 +115,7 @@ class tpyCart implements tpyCartInterface
    */
   public function getCountOfProduct(tpyProductInterface $product)
   {
-    return $this->_items[$product->getIdentifier()]['count'];
+    return $this->_items[$product->getUid()]['count'];
   }
   
   /**

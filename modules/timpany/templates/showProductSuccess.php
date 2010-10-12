@@ -22,7 +22,7 @@
         </dl>
       </div>
       <div class="product-availability"><?php echo format_number_choice(__('[0] no items left |[1,1] only one item left |(1,10] only {number} items left |(10,Inf] available', null, 'timpany'), array('{number}' => $product->getInventory()), $product->getInventory()) ?></div>
-      <div class="product-name"><?php echo add_to_cart($product, __('add to cart', null, 'timpany')) ?></div>
+      <div class="product-name"><?php echo link_to(__('add to cart', null, 'timpany'), '@timpany_cart_add?product=' . $product->getSlug()) ?></div>
       <div class="product-description"><?php echo $product->getDescription(0) ?></div>
       <form action="<?php echo url_for('@timpany_cart_add?product=' . $product->getSlug()) ?>" method="POST">
         <?php echo $form ?>

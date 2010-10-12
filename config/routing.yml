@@ -2,14 +2,6 @@
 timpany_index:
   url:   /shop
   param: { module: timpany, action: index }
-timpany_category:
-  url:   /shop/:category
-  param: { module: timpany, action: index }
-  requirements: { category: .* }
-timpany_product:
-  url:   /shop/:category/:product
-  param: { module: timpany, action: showProduct }
-  requirements: { category: .*, product: .* }
 timpany_cart_add:
   url:   /cart/add/:product
   param: { module: timpany, action: addToCart }
@@ -27,3 +19,11 @@ timpany_checkout:
 timpany_checkout_finish:
   url:   /checkout/finish
   param: { module: timpany, action: finishCheckout }
+timpany_product:
+  url:   /shop/:category/:product
+  param: { module: timpany, action: showProduct }
+  requirements: { category: .*, product: .* }
+timpany_category:
+  url:   /shop/:category
+  param: { module: timpany, action: index }
+  requirements: { category: .* }
