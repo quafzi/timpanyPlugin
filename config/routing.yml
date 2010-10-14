@@ -27,3 +27,11 @@ timpany_category:
   url:   /shop/:category
   param: { module: timpany, action: index }
   requirements: { category: .* }
+
+timpany_payment_deposit:
+  url:   /payment/deposit
+  param: { module: timpanyPayment, action: deposit }
+timpany_payment_approve:
+  url:   /payment/approve
+  param: { module: timpanyPayment, action: approve }
+  
