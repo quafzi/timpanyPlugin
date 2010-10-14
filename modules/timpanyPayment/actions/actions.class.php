@@ -1,5 +1,5 @@
 <?php
-class paymentActions extends sfActions
+class timpanyPaymentActions extends sfActions
 {
   public function executeDeposit(sfWebRequest $request)
   {
