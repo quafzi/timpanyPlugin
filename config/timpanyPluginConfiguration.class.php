@@ -17,5 +17,6 @@ class timpanyPluginConfiguration extends sfPluginConfiguration
    */
   public function initialize()
   {
+    $this->connectTests();
   }
 }

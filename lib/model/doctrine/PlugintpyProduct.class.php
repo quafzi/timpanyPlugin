@@ -6,7 +6,7 @@
  * @package    timpany
  * @author     Timpany Core Team <lsdug@googlegroups.com>
  */
-abstract class PlugintpyProduct extends BasetpyProduct
+abstract class PlugintpyProduct extends BasetpyProduct implements tpyProductInterface
 {
   /**
    * get unique product identifier
