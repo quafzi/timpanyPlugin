@@ -14,16 +14,26 @@ abstract class PlugintpyOrder extends BasetpyOrder implements tpyOrderInterface
   
   /**
    * create payment for order
+   * 
+   * @param string $success_url Url of page to display after successful payment
+   * @param string $cancel_url  Url of page to display after canceled payment
+   * @param string $subject     Subject of the payment
+   * 
    * @return Payment
    */
-  public function createPayment($action)
+  public function createPayment($success_url, $cancel_url, $subject=null)
   {
     $paymentdata = new PaypalPaymentData();
-    $paymentdata->subject = 'Test Payment #' . $this->getId();
+    $paymentdata->subject = is_null($subject)
+      ? 'Order #' . $this->getId()
+      : $subject;
     
-    $paymentdata->cancel_url = $action->generateUrl('timpany_cart', array(), true);
-    $paymentdata->return_url = $action->generateUrl('payment_approve', array(), true);
-    $payment = Payment::create($this->getGrossSum('de'), 'EUR', $paymentdata);
+    $paymentdata->cancel_url = $cancel_url;
+    $paymentdata->return_url = $success_url;
+    $payment = Payment::create(
+      $this->getGrossSum('de'),
+      'EUR',
+      $paymentdata);
     $payment->setOrder($this);
     $payment->save();
     return $payment;

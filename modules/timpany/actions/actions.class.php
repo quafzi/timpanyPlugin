@@ -57,7 +57,9 @@ class timpanyActions extends sfActions
     $this->order = tpyOrderTable::getInstance()->createOrder($cart);
     /* payment requires a persistant order */
     $this->order->save();
-    $payment = $this->order->createPayment($this);
+    $success_url = $this->generateUrl('timpany_payment_approve', array(), true);
+    $cancel_url  = $this->generateUrl('timpany_cart', array(), true);
+    $payment = $this->order->createPayment($success_url, $cancel_url);
       
     try
     {
