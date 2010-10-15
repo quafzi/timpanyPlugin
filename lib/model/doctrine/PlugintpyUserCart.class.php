@@ -50,7 +50,7 @@ abstract class PlugintpyUserCart extends BasetpyUserCart
    */
   public function addProduct(tpyProductInterface $product, $count=1) {
     foreach ($this->getItems() as $item) {
-      if ($item->getProductIdentifier() == $product->getIdentifier()) {
+      if ($item->getProductIdentifier() == $product->getUid()) {
         $cartItem = $item;
         break;
       }
@@ -61,7 +61,7 @@ abstract class PlugintpyUserCart extends BasetpyUserCart
       $cartItem = new tpyCartItem();
       $cartItem
         ->setCount($count)
-        ->setProductIdentifier($product->getIdentifier())
+        ->setProductIdentifier($product->getUid())
         ->setProductData($product->toJson());
       $this->getItems()->add($cartItem);
     }
@@ -114,7 +114,7 @@ abstract class PlugintpyUserCart extends BasetpyUserCart
   {
     $count = 0;
     foreach ($this->getItems() as $item) {
-      if ($item->getProductIdentifier() == $product->getIdentifier()) {
+      if ($item->getProductIdentifier() == $product->getUid()) {
         return $item->getCount();
       }
     }
