@@ -38,7 +38,8 @@ table.cart-items td.product-count,
 table.cart-items td.product-price,
 table.cart-items td.item-netsum,
 table.cart-items td.item-grosssum,
-table.cart-items tr.cart-totals
+table.cart-items tr.cart-totals td,
+table.cart-items tr.cart-totals th
 {
 	text-align: right;
 }

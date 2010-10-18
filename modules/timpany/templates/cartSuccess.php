@@ -1,7 +1,7 @@
 <h2><?php echo __('cart', null, 'timpany') ?></h2>
 <div id="cart">
   <?php if(isset($product)): ?>
-    Sie haben <span class="product-name"><?php echo $product->getName() ?></span> in Ihren Warenkorb gelegt.
+    <?php echo __('You did put <span class="product-name">{product}</span> into your cart.', array('{product}' => $product->getName()), 'timpanyCart') ?>
   <?php endif; ?>
   
   <dd><?php echo format_number_choice(__('[0] Your cart is empty. |[1] Your cart contains one item: |(1,Inf] Your cart contains {number} items:', null, 'timpanyCart'), array('{number}' => $cart->getItemCount()), $cart->getItemCount()) ?></dd>
@@ -26,7 +26,7 @@
           	<td class="product-name"><?php echo $item->getProductAttribute('name')  //link_to($item['product_data']['name'], '@timpany_product?category=xxx&product=' . $item['product']->getSlug()) ?></td>
           	<td class="product-price"><?php echo format_currency(round($item->getProductAttribute('net_price'), 2), 'EUR') ?></td>
           	<td class="product-price"><?php echo format_currency(round($item->getGrossPrice('de'), 2), 'EUR') ?></td>
-          	<td class="vat-notice">(inkl. <?php echo $item->getTaxPercent('de') ?>% MwSt.)</td>
+          	<td class="vat-notice"><?php echo __('incl. {tax_percent}% vat', array('{tax_percent}' => $item->getTaxPercent('de')), 'timpanyCart') ?></td>
           	<td class="item-netsum"><?php echo format_currency(round($item->getNetSum(), 2), 'EUR') ?></td>
           	<td class="item-grosssum"><?php echo format_currency(round($item->getGrossSum('de'), 2), 'EUR') ?></td>
           	<td class="link"><?php echo link_to(__('remove', null, 'timpanyCart'), '@timpany_cart_remove?product='.$key) ?></td>
@@ -34,7 +34,7 @@
         <?php endforeach ?>
         <tr class="cart-totals first">
           <th colspan="6">
-            Nettosumme:
+            <?php echo __('total net sum', null, 'timpanyCart')?>:
           </th>
           <td>
             <?php echo format_currency(round($cart->getNetSum(), 2), 'EUR') ?>
@@ -43,7 +43,7 @@
         </tr>
         <tr class="cart-totals">
           <th colspan="6">
-            Bruttosumme:
+            <?php echo __('total gross sum', null, 'timpanyCart')?>:
           </th>
           <td>
             <?php echo format_currency(round($cart->getGrossSum(), 2), 'EUR') ?>
