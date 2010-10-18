@@ -1,0 +1,64 @@
+h2
+{
+    background-color: #4A3420;
+    color:            #faf4e0;
+    font-size:        20px;
+    
+    padding: 5px 50px 5px 300px;
+}
+
+#cart
+{
+    margin: 5px;
+}
+
+table.cart-items
+{
+    width: 100%;
+}
+
+table.cart-items th
+{
+    font-weight: bold;
+}
+
+table.cart-items, table.cart-items td, table.cart-items th
+{
+    border: 1px solid #4a3420;
+    border-collapse: collapse;
+    margin: 0px;
+}
+
+table.cart-items th, table.cart-items td
+{
+    padding: 3px;
+}
+
+table.cart-items td.product-count,
+table.cart-items td.product-price,
+table.cart-items td.item-netsum,
+table.cart-items td.item-grosssum,
+table.cart-items tr.cart-totals
+{
+	text-align: right;
+}
+
+table.cart-items tr.cart-totals td,
+table.cart-items tr.cart-totals th
+{
+	border: none;
+}
+
+.link-to-checkout
+{
+  text-align: right;
+}
+
+.link-to-checkout button,
+.link-to-checkout input.button
+{
+  margin-top:       10px;
+  background-color: #4A3420;
+  color:            #faf4e0;
+  width:            84px;
+}
