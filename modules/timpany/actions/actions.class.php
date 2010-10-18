@@ -6,10 +6,6 @@ class timpanyActions extends sfActions
     $this->products = tpyProductTable::getInstance()->findAll();
   }
   
-  public function executeShowCategory(sfWebRequest $request)
-  {
-  }
-  
   public function executeShowProduct(sfWebRequest $request)
   {
     $this->product = tpyProductTable::getInstance()->findOneBySlug($request->getParameter('product'));
@@ -107,5 +103,10 @@ class timpanyActions extends sfActions
   	$this->order = Doctrine::getTable('tpyOrder')->findOneById(
       $this->getUser()->getFlash('timpany_last_order_id')
     );
+  }
+  
+  public function executeOrderList(sfWebRequest $request)
+  {
+    $this->orders = tpyOrderTable::getInstance()->findBySfGuardUserId($this->getUser()->getGuardUser()->getId());
   }
 }

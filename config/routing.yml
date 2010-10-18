@@ -34,4 +34,7 @@ timpany_payment_deposit:
 timpany_payment_approve:
   url:   /payment/approve
   param: { module: timpanyPayment, action: approve }
-  
+
+timpany_orders_list:
+  url:   /customer/orders
+  param: { module: timpany, action: orderList }

@@ -46,13 +46,11 @@ abstract class PlugintpyOrder extends BasetpyOrder implements tpyOrderInterface
   
   public function getGrossSum()
   {
-    if (true or is_null($this->gross_sum)) {
-      $this->gross_sum=0;
-      foreach ($this->getItems() as $item) {
-        $this->gross_sum += $item->getGrossSum();
-      } 
-    }
-    return $this->gross_sum;  
+    $gross_sum=0;
+    foreach ($this->getItems() as $item) {
+      $gross_sum += $item->getGrossSum();
+    } 
+    return $gross_sum;  
   }
   
   public function addProduct(tpyProductInterface $product, $count=1) {
@@ -133,7 +131,11 @@ abstract class PlugintpyOrder extends BasetpyOrder implements tpyOrderInterface
    */
   public function getNetSum()
   {
-    
+    $net_sum=0;
+    foreach ($this->getItems() as $item) {
+      $net_sum += $item->getNetSum();
+    }
+    return $net_sum;
   }
   
   /**
@@ -154,7 +156,11 @@ abstract class PlugintpyOrder extends BasetpyOrder implements tpyOrderInterface
    */
   public function getProductCount()
   {
-    
+    $count = 0;
+    foreach ($this->getItems() as $item) {
+    	$count += $item->getCount();
+    }
+    return $count;
   }
 
   /**
@@ -165,7 +171,7 @@ abstract class PlugintpyOrder extends BasetpyOrder implements tpyOrderInterface
    */
   public function getItemCount()
   {
-    
+    return count($this->getItems());
   }
   
   /** 

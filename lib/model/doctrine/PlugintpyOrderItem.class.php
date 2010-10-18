@@ -30,7 +30,6 @@ abstract class PlugintpyOrderItem extends BasetpyOrderItem
       } catch (Doctrine_Record_UnknownPropertyException $e) {
         return $this->getFrozen($property);
       }
-      throw $e;
     }
   }
   
