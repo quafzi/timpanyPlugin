@@ -113,8 +113,23 @@ class timpanyActions extends sfActions
     );
   }
   
-  public function executeOrderList(sfWebRequest $request)
+  public function executeListOrders(sfWebRequest $request)
   {
     $this->orders = tpyOrderTable::getInstance()->findBySfGuardUserId($this->getUser()->getGuardUser()->getId());
+  }
+  
+  public function executeShowOrder(sfWebRequest $request)
+  {
+  	if ($request->hasParameter('order_id')) {
+  		$this->order = tpyOrderTable::getInstance()
+  		  ->findOneById($request->getParameter('order_id'));
+  	} else {
+      $this->order = tpyOrderTable::getInstance()
+        ->findOneByOrderNumber($request->getParameter('order_number'));
+  	}
+  	if (!$this->order) {
+  		$this->getUser()->setFlash('message', $this->getContext()->getI18N()->__('requested order does not exist', null, 'timpany'));
+  		$this->redirect('@timpany_orders_list');
+  	}
   }
 }

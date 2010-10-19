@@ -1,0 +1,39 @@
+table.order-list tr td,
+table.order-list tr th,
+table.order-show tr td,
+table.order-show tr th,
+table.order-items-list tr td,
+table.order-items-list tr th
+{
+  padding: 4px;
+  text-align: right;
+}
+
+table.order-list thead tr,
+table.order-items-list thead tr
+{
+  background: #ddd;
+}
+
+table.order-list thead th,
+table.order-items-list thead th
+{
+  font-weight: bold;
+}
+
+table.order-list tbody tr:nth-child(even),
+table.order-items-list tbody tr:nth-child(even)
+{
+  background: #ddd;
+}
+
+table.order-items-list tfoot th,
+table.order-items-list tfoot td
+{
+  font-weight: bold;
+}
+
+table.order-items-list tfoot td
+{
+  border-top: 1px solid black;
+}

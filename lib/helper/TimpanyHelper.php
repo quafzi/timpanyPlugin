@@ -31,6 +31,7 @@ function load_timpany_assets()
   $response->addStylesheet('/timpanyPlugin/css/timpanyCart.css');
   $response->addStylesheet('/timpanyPlugin/css/timpanyProduct.css');
   $response->addStylesheet('/timpanyPlugin/css/timpanyCheckout.css');
+  $response->addStylesheet('/timpanyPlugin/css/timpanyCustomer.css');
 }
 
 load_timpany_assets();

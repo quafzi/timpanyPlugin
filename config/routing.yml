@@ -37,4 +37,12 @@ timpany_payment_approve:
 
 timpany_orders_list:
   url:   /customer/orders
-  param: { module: timpany, action: orderList }
+  param: { module: timpany, action: listOrders }
+timpany_order_show_by_id:
+  url:   /customer/order/id/:order_id
+  param: { module: timpany, action: showOrder }
+  requirements: { order_id: .* }
+timpany_order_show:
+  url:   /customer/order/:order_number
+  param: { module: timpany, action: showOrder }
+  requirements: { order_number: .* }
