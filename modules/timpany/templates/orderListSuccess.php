@@ -1,23 +1,24 @@
-<?php echo count($orders) ?>
-
-<ul class="order_list">
-  <?php foreach ($orders as $key=>$order): ?>
-  	<li class="order-list-item" id="order-list-item-<?php echo $key ?>">
-      <dl>
-        <dt><?php echo __('order number') ?></dt>
-        <dd><?php echo $order->getId() ?></dd>
-        <dt><?php echo __('order date') ?></dt>
-        <dd><?php echo $order->getCreatedAt() ?></dd>
-        <dt><?php echo __('item count') ?></dt>
-        <dd><?php echo $order->getItemCount() ?></dd>
-        <dt><?php echo __('article count') ?></dt>
-        <dd><?php echo $order->getProductCount() ?></dd>
-        <dt><?php echo __('net sum') ?></dt>
-        <dd><?php echo $order->getNetSum() ?></dd>
-        <dt><?php echo __('gross sum') ?></dt>
-        <dd><?php echo $order->getGrossSum() ?></dd>
-      </dl>
-  	</li>
-  <?php endforeach ?>
-</ul>
-<br clear="all" />
+<table class="order_list">
+  <thead>
+    <tr>
+      <th><?php echo __('order number') ?></th>
+      <th><?php echo __('order date') ?></th>
+      <th><?php echo __('item count') ?></th>
+      <th><?php echo __('article count') ?></th>
+      <th><?php echo __('net sum') ?></th>
+      <th><?php echo __('gross sum') ?></th>
+    </tr>
+  </thead>
+  <tbody>
+	  <?php foreach ($orders as $key=>$order): ?>
+	  	<tr class="order-list-item" id="order-list-item-<?php echo $key ?>">
+        <td><?php echo $order->getId() ?></td>
+        <td><?php echo $order->getCreatedAt() ?></td>
+        <td><?php echo $order->getItemCount() ?></td>
+        <td><?php echo $order->getProductCount() ?></td>
+        <td><?php echo $order->getNetSum() ?></td>
+        <td><?php echo $order->getGrossSum() ?></td>
+	  	</tr>
+	  <?php endforeach ?>
+  </tbody>
+</table>

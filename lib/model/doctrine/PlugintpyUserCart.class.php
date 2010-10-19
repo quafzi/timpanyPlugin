@@ -6,7 +6,7 @@
  * @package    timpany
  * @author     Timpany Core Team <lsdug@googlegroups.com>
  */
-abstract class PlugintpyUserCart extends BasetpyUserCart
+abstract class PlugintpyUserCart extends BasetpyUserCart implements tpyCartInterface
 {
   public function clear()
   {

@@ -6,6 +6,8 @@ tpyOrder:
       type: integer(4)
       primary: true
       autoincrement: true
+    order_number:
+      type: integer(3)
     #TODO: should become a relation to address model
     billing_address:
       type: text

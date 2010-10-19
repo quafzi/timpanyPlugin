@@ -22,12 +22,14 @@ class PlugintpyOrderTable extends Doctrine_Table
      * turn a cart into an order
      * 
      * @param tpyCartInterface $cart
+     * @param sfGuardUser      $guardUser
      * 
      * @return tpyOrder
      */
-    public function createOrder(tpyCartInterface $cart)
+    public function createOrder(tpyCartInterface $cart, sfGuardUser $guardUser=null)
     {
         $order = self::create();
+        $order->setUser($guardUser);
         $order->setNetSum($cart->getNetSum());
         foreach ($cart->getItems() as $item)
         {

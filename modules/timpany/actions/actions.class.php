@@ -50,9 +50,17 @@ class timpanyActions extends sfActions
     if (0 == $cart->getItemCount()) {
     	$this->redirect('@timpany_cart');
     }
-    $this->order = tpyOrderTable::getInstance()->createOrder($cart);
-    /* payment requires a persistant order */
-    $this->order->save();
+    $guardUser = $this->getUser()->isAuthenticated()
+      ? $this->getUser()->getGuardUser()
+      : null;
+    $order_id = $this->getUser()->getAttribute('active_checkout_order', null, 'timpany');
+    if (is_null($order_id)) {
+      $this->order = tpyOrderTable::getInstance()->createOrder($cart, $guardUser);
+	    /* payment requires a persistant order */
+	    $this->order->save();
+    } else {
+    	$this->order = tpyOrderTable::getInstance()->findOneById($order_id);
+    }
     $success_url = $this->generateUrl('timpany_payment_approve', array(), true);
     $cancel_url  = $this->generateUrl('timpany_cart', array(), true);
     $payment = $this->order->createPayment($success_url, $cancel_url);

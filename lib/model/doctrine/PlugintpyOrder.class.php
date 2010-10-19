@@ -86,6 +86,20 @@ abstract class PlugintpyOrder extends BasetpyOrder implements tpyOrderInterface
       $item->setCount($item->setCount() + $count);
       $this->save();
   }
+    
+  public function save(Doctrine_Connection $conn = null)
+  {
+    $savepoint = uniqid('new_order_');
+    $this->getTable()->getConnection()->beginTransaction($savepoint);
+    $last_order_number = $this->getTable()
+        ->createQuery()
+        ->addSelect('max(order_number)')
+        ->execute()
+        ->getFirst()
+        ->getMax();
+    $this->setOrderNumber($last_order_number+1);
+    parent::save($conn);
+  }
   
   /**
    * clear cart
